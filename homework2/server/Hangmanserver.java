@@ -48,7 +48,7 @@ public class Hangmanserver {
         try {
             initialize();
             while (true) {
-                Thread.sleep(50); 
+
                 selector.select();
                 Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
 
