@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Daniel BlackJack</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h3>BlackJack</h3>
+
+            <br></br>
+            <p>
+                <h:outputLabel value ="Welcome #{blackJackManagedBean.state.playerName} lets play BlackJack! "/>
+            </p> 
+            <br></br><br></br><br></br>
+
+            <p>
+                <h:outputLabel value ="Dealer cards:  #{blackJackManagedBean.state.dealerHand} " rendered="#{blackJackManagedBean.loose ||
+                                                        blackJackManagedBean.win || blackJackManagedBean.bust}"/>
+                <h:outputLabel value ="Dealer cards:  #{blackJackManagedBean.hiddenCard} " rendered="#{blackJackManagedBean.startedGame}"/>
+            </p> 
+
+            <h:commandButton value="Deal" action="#{blackJackManagedBean.deal}" rendered="#{!blackJackManagedBean.startedGame}"/>
+
+            <br></br><br></br>
+            <h:outputLabel value ="Your cards:  #{blackJackManagedBean.state.playerHand} " rendered="#{blackJackManagedBean.startedGame}"/>
+            <h:outputLabel value = "#{blackJackManagedBean.state.playerHand}BUST!!!!" rendered= "#{blackJackManagedBean.bust}"/>
+            <h:outputLabel value = "#{blackJackManagedBean.state.playerHand}Win! Congratulations! lets play again" rendered= "#{blackJackManagedBean.win}"/>
+            <h:outputLabel value = "#{blackJackManagedBean.state.playerHand}You loose, lets play again" rendered= "#{blackJackManagedBean.loose}"/>
+
+            <p>
+                <h:commandButton value="Hit" action="#{blackJackManagedBean.hit}" rendered="#{blackJackManagedBean.startedGame}"/>
+                <h:commandButton value="Stand" action="#{blackJackManagedBean.stand}" rendered="#{blackJackManagedBean.startedGame}"/>
+            </p> 
+
+            <p>
+                <h:outputLabel value ="Coins:  #{blackJackManagedBean.state.coins} "/>
+            </p> 
+
+
+        </h:form>
+    </h:body>
+</html>
+
